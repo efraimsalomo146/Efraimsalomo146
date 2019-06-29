@@ -1,0 +1,105 @@
+<html>
+  <center>
+    <span>CLICK the Square or CLICK the Button</span> 
+
+    <br><br>
+
+    <div id="stage_1">
+      <div id="square" class="stopit"></div>
+    </div>
+
+    <div id="stage_2"></div>
+
+    <br><br>
+
+    <button id="addmove">Play</button>
+  </center>
+</html>
+
+<style type="text/css">
+
+body{
+  background: black;
+   min-width: 1260px;/*avoid #stage_2 moved into bottom if the display resolution is lower than 11800px */
+}
+
+span{
+  color: white;
+  font-family: cursive;
+  font-size: 50px;
+
+  top: 100px;
+  position: relative;
+}
+
+#stage_1{
+  height: 350px;
+  width: 580px;
+  background: white;
+
+  top: 100px;
+  position: relative;
+  display: inline-block;
+}
+
+#stage_2{
+  height: 330px;
+  width: 580px;
+  background: transparent;
+
+  border: 10px white solid;
+  border-left: 0px white solid;
+
+  top: 100px;
+  left: -10px;
+  position: relative;
+  display: inline-block;
+}
+
+#square{
+  height: 200px;
+  width: 200px;
+  background: black;
+
+  border-radius: 50%;
+  outline: 15px black solid;
+
+  top: 70px;
+  left: -170px;
+  position: relative;
+}
+
+#square:hover, .playit{
+  animation: rotatethis 3s linear infinite alternate; 
+  /*animation: name, duration, timing-function, iteration-count, direction;*/
+}
+
+@keyframes rotatethis{
+  0%{ transform: rotate(0deg); left: -170px; background: black; }
+   25%{ background: black; } 
+    75%{ background: white; } 
+      100%{ transform: rotate(360deg); left: 765px; background: white; }  
+}
+
+button{
+  height: 50px;
+  width: 200px;
+
+  top: 110px;
+  position: relative;
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+  //   console.log("jquery installed");
+  var btntext = "Play";
+
+    $("#addmove").click(function(){
+      //   alert("click function actived");
+      $("#square").toggleClass("playit stopit");
+      btntext =  btntext == "Play" ? "Stop" : "Play"; // IF btnText VALUE IS == "Play" THEN CHANGE btntext VALUE TO "Stop" OR IF NOT THEN CHANGE btntext VALUE TO "Play"
+      $(this).text(btntext);
+    });
+</script>
